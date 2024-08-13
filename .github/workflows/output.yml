@@ -1,8 +1,12 @@
 name: Output event details on issues
-on: issues
+on:
+  issues:
 jobs:
   output:
     runs-on: ubuntu-latest
     steps:
       - name: Output event details
-        run: echo "Issue opened by ${{ github.actor }} on ${{ github.repository }} at ${{ github.event.issue.created_at }}"
+        run: |
+          echo "Issue opened by ${{ github.actor }} on ${{ github.repository }} at ${{ github.event.issue.created_at }}." 
+          echo "Issue title: ${{ github.event.issue.title }} and Issue body: ${{ github.event.issue.body }}"
+        
